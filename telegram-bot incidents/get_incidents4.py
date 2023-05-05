@@ -121,7 +121,6 @@ if __name__ == "__main__":
     res = session.post(settings['core_url'] + "/api/v2/incidents/", json=json.loads(post_params)).text
 
     recv_list = []
-    fuck = 5
     for inc in (reversed(json.loads(res)["incidents"])):
         if not sent_list or (int(sent_list[-1]) < int(inc["key"].split('-')[-1])):
             send_telegram_message(inc, settings)
